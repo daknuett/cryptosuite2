@@ -33,4 +33,6 @@ uint8_t * Sha256Wrapper::result(void)
 	return sha256_hasher_gethash(&_hasher);
 }
 
+Sha256Wrapper Sha256;
+
 #endif
