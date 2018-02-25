@@ -92,9 +92,6 @@ void sha256_hash_block(sha256_hasher_t hasher)
 
 void sha256_hasher_add_byte(sha256_hasher_t hasher, uint8_t byte)
 {
-	// the XOR 3 comes from SHA256's weird behaviour
-	// regarding bit streams. Just do it and do not
-	// think about that crap :-P.
 	hasher->buffer.bytes[hasher->block_offset] = byte;
 	hasher->block_offset++;
 	if(hasher->block_offset == SHA256_BLOCK_LEN)
@@ -133,22 +130,8 @@ void sha256_hasher_pad(sha256_hasher_t hasher)
 		sha256_hasher_add_byte(hasher, 0);
 	}
 
-	//int i;
-	// the -3 comes from SHA256's weird bit stream crap.
-	// Just do not think too much about it.
-	//for(i = 64; i >= 8 ; i -= 8)
-	//{
-	//	sha256_hasher_add_byte(hasher, hasher->total_bytes >> (i - 3));
-	//}
-//	sha256_hasher_add_byte(hasher, hasher->total_bytes >> 61);
-	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 53);
-	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 45);
-	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 37);
-	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 29);
-	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 21);
-	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 13);
-	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 5);
-	//sha256_hasher_add_byte(hasher, hasher->total_bytes << 3);
+	// FIXME:
+	// Use a loop for this.
 	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8 >> 56);
 	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8 >> 48);
 	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8 >> 40);
