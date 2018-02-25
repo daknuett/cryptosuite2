@@ -11,8 +11,7 @@ void sha256_hash_block(sha256_hasher_t hasher)
 	// See how I did this below.
 	// Allocating the message schedule would eat 2k RAM
 	// which is a no-go on an AVR. 
-	//
-	uint32_t   W[64];
+	uint32_t W[SHA256_BLOCK_LEN / 4];
 	int i4;
 	for(i = i4 = 0; i < 16; i++, i4 += 4)
 	{
@@ -23,8 +22,6 @@ void sha256_hash_block(sha256_hasher_t hasher)
 	}
 	for(i = 16; i < 64; i++)
 	{
-		W[i] = sha256_sigma1(W[i - 2]) + W[i - 7] + 
-			sha256_sigma0(W[i - 15]) + W[i - 16];
 	}
 	
 	a = hasher->state.words[0];
@@ -44,15 +41,13 @@ void sha256_hash_block(sha256_hasher_t hasher)
 		// The first 16 words of the message schedule is just the block
 		// anyways and the computation of the message schedule uses only
 		// the last 16 words, so we can do that.
-	//	if( i >= 16 )
-	//	{
-	//		hasher->buffer.words[i & 15] = sha256_sigma1(hasher->buffer.words[(i - 2) & 15]) +
-	//			hasher->buffer.words[(i - 7) & 15] +
-	//			sha256_sigma0(hasher->buffer.words[(i - 15) & 15]) +
-	//			hasher->buffer.words[(i - 16) & 15];
-	//	}
+		if( i >= 16 )
+		{
+			W[i & 15] = sha256_sigma1(W[(i - 2) & 15]) + W[(i - 7) & 15] + 
+				sha256_sigma0(W[(i - 15) & 15]) + W[(i - 16) & 15];
+		}
 	//	t1 = h + sha256_SIGMA1(e) + sha_ch(e, f, g) + sha256_k(i) + hasher->buffer.words[i & 15];
-		t1 = h + sha256_SIGMA1(e) + sha_ch(e, f, g) + sha256_k(i) + W[i];
+		t1 = h + sha256_SIGMA1(e) + sha_ch(e, f, g) + sha256_k(i) + W[i & 15];
 		t2 = sha256_SIGMA0(a) + sha_maj(a, b, c);
 		h = g;
 		g = f;
