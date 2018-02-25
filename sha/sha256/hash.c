@@ -164,7 +164,7 @@ uint8_t * sha256_hasher_gethash(sha256_hasher_t hasher)
 
 
 #ifdef SHA256_ENABLE_HMAC
-void sha256_hasher_init_hmac(sha256_t hasher, const uint8_t * key, size_t key_len)
+void sha256_hasher_init_hmac(sha256_hasher_t hasher, const uint8_t * key, size_t key_len)
 {
 	int i;
 	memset(hasher->hmac_key_buffer, 0, SHA256_BLOCK_LEN);
@@ -191,7 +191,7 @@ void sha256_hasher_init_hmac(sha256_t hasher, const uint8_t * key, size_t key_le
 	}
 
 }
-uint8_t * sha256_hasher_gethmac(sha256_t hasher)
+uint8_t * sha256_hasher_gethmac(sha256_hasher_t hasher)
 {
 	int i;
 	memcpy(hasher->hmac_inner_hash, sha256_hasher_gethash(hasher),

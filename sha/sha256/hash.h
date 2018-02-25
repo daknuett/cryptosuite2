@@ -30,7 +30,9 @@ void sha256_hasher_pad(sha256_hasher_t hasher);
  * */
 uint8_t * sha256_hasher_gethash(sha256_hasher_t hasher);
 
-
-
+#ifdef SHA256_ENABLE_HMAC
+void sha256_hasher_init_hmac(sha256_hasher_t hasher, const uint8_t * key, size_t key_len);
+uint8_t * sha256_hasher_gethmac(sha256_hasher_t hasher);
+#endif
 
 #endif
