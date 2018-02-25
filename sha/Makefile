@@ -8,10 +8,10 @@ all: $(sha256_objects)
 %.o: %.c
 	$(CC) $< $(CFLAG) -c -o $@
 
-test_sha256: $(sha256_objects) test_sha256.c
-	$(CC) test_sha256.c $(CFLAG) -I. $(sha256_objects) -o test_sha256
+test/test_sha256: $(sha256_objects) test/test_sha256.c
+	$(CC) test/test_sha256.c $(CFLAG) -I. $(sha256_objects) -o test/test_sha256
 
 clean:
 	-rm $(sha256_objects)
-	-rm test_sha256
+	-rm test/test_sha256
 
