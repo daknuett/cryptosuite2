@@ -6,6 +6,10 @@
 #include <stddef.h>
 #include <unistd.h>
 
+#ifdef __AVR__
+#define ssize_t long int
+#endif
+
 ssize_t sha256_hasher_write(sha256_hasher_t hasher, const void * buf, size_t count); 
 
 #endif  
