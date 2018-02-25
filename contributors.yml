@@ -1,0 +1,7 @@
+- name: Daniel Knüttel
+  email: daniel.knuettel@daknuett.eu
+  contributions:
+        - year: 2018
+          descr: Initial version of the library
+        - year: 2018
+          descr: Initial version of the C++ Wrapper
