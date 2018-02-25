@@ -16,7 +16,7 @@ class Sha256Wrapper : public Print
 		uint8_t * resultHmac(void);
 #endif
 		virtual size_t write(uint8_t);
-		/using Print::write;
+		using Print::write;
 	private:
 		struct sha256_hasher_s _hasher;
 
