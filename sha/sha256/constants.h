@@ -10,13 +10,15 @@
 #include <avr/pgmspace.h>
 #endif
 
+#ifndef __AVR__
 extern const uint32_t sha256_init_state[SHA256_HASH_LEN / 4];
-#ifdef __AVR__
+#else
 extern const uint32_t sha256_init_state[SHA256_HASH_LEN / 4] PROGMEM;
 #endif
 
+#ifndef __AVR__
 extern const uint32_t sha256_constants[64];
-#ifdef __AVR__
+#else
 extern const uint32_t sha256_constants[64] PROGMEM;
 #endif
 

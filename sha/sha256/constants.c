@@ -1,7 +1,8 @@
 #include "constants.h"
 
+#ifndef __AVR__
 const uint32_t sha256_init_state[SHA256_HASH_LEN / 4] =
-#ifdef __AVR__
+#else
 const uint32_t sha256_init_state[SHA256_HASH_LEN / 4] PROGMEM =
 #endif
 {
@@ -9,8 +10,9 @@ const uint32_t sha256_init_state[SHA256_HASH_LEN / 4] PROGMEM =
 	0x510E527F, 0x9B05688C, 0x1F83D9AB, 0x5BE0CD19
 };
 
+#ifndef __AVR__
 const uint32_t sha256_constants[64] = 
-#ifdef __AVR__
+#else
 const uint32_t sha256_constants[64] PROGMEM =
 #endif
 {
