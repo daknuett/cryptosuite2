@@ -1,6 +1,7 @@
 #ifndef SHA256_CONSTANTS_H_
 #define SHA256_CONSTANTS_H_
 
+#include "default.h"
 #include <inttypes.h>
 
 #define SHA256_BLOCK_LEN 64

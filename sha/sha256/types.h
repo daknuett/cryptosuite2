@@ -1,6 +1,7 @@
 #ifndef SHA256_TYPES_H_
 #define SHA256_TYPES_H_
 
+#include "default.h"
 #include <inttypes.h>
 #include "constants.h"
 

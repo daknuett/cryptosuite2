@@ -1,6 +1,7 @@
 #ifndef SHA256_SHA256_H_
 #define SHA256_SHA256_H_
 
+#include "default.h"
 #include "types.h"
 #include "hash.h"
 #include <stddef.h>

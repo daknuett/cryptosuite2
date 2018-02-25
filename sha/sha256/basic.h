@@ -1,6 +1,7 @@
 #ifndef SHA256_BASIC_H_
 #define SHA256_BASIC_H_
 
+#include "default.h"
 #include <inttypes.h>
 
 #define sha_ch(x, y, z)      (((x) & ((y) ^ (z))) ^ (z))
