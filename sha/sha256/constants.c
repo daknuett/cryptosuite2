@@ -1,20 +1,18 @@
 #include "constants.h"
 
-const uint32_t sha256_init_state[SHA256_HASH_LEN / 4]
+const uint32_t sha256_init_state[SHA256_HASH_LEN / 4] =
 #ifdef __AVR__
-						PROGMEM
+const uint32_t sha256_init_state[SHA256_HASH_LEN / 4] PROGMEM =
 #endif
-							 = 
 {
 	0x6A09E667, 0xBB67AE85, 0x3C6EF372, 0xA54FF53A,
 	0x510E527F, 0x9B05688C, 0x1F83D9AB, 0x5BE0CD19
 };
 
-const uint32_t sha256_constants[64]
+const uint32_t sha256_constants[64] = 
 #ifdef __AVR__
-						PROGMEM
+const uint32_t sha256_constants[64] PROGMEM =
 #endif
-							=
 {
 	0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b,
 	0x59f111f1, 0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01,
