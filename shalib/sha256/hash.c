@@ -1,0 +1,214 @@
+#include "hash.h"
+#include <stdio.h>
+
+
+void sha256_hash_block(sha256_hasher_t hasher)
+{
+	int i;
+	uint32_t a, b, c, d, e, f, g, h, t1, t2;
+
+	// XXX: Omit initializing the message schedule.
+	// See how I did this below.
+	// Allocating the message schedule would eat 2k RAM
+	// which is a no-go on an AVR. 
+	//
+	uint32_t   W[64];
+	int i4;
+	for(i = i4 = 0; i < 16; i++, i4 += 4)
+	{
+		W[i] =  (((uint32_t)hasher->buffer.bytes[i4]) << 24) |
+			(((uint32_t)hasher->buffer.bytes[i4 + 1]) << 16) |
+			(((uint32_t)hasher->buffer.bytes[i4 + 2]) << 8) |
+			(((uint32_t)hasher->buffer.bytes[i4 + 3]));
+	}
+	for(i = 16; i < 64; i++)
+	{
+		W[i] = sha256_sigma1(W[i - 2]) + W[i - 7] + 
+			sha256_sigma0(W[i - 15]) + W[i - 16];
+	}
+	
+	a = hasher->state.words[0];
+	b = hasher->state.words[1];
+	c = hasher->state.words[2];
+	d = hasher->state.words[3];
+	e = hasher->state.words[4];
+	f = hasher->state.words[5];
+	g = hasher->state.words[6];
+	h = hasher->state.words[7];
+
+	for(i = 0; i < 64; i++)
+	{
+		// XXX:
+		// This part of the computation omits the message schedule
+		// W as described in https://tools.ietf.org/html/rfc4634
+		// The first 16 words of the message schedule is just the block
+		// anyways and the computation of the message schedule uses only
+		// the last 16 words, so we can do that.
+	//	if( i >= 16 )
+	//	{
+	//		hasher->buffer.words[i & 15] = sha256_sigma1(hasher->buffer.words[(i - 2) & 15]) +
+	//			hasher->buffer.words[(i - 7) & 15] +
+	//			sha256_sigma0(hasher->buffer.words[(i - 15) & 15]) +
+	//			hasher->buffer.words[(i - 16) & 15];
+	//	}
+	//	t1 = h + sha256_SIGMA1(e) + sha_ch(e, f, g) + sha256_k(i) + hasher->buffer.words[i & 15];
+		t1 = h + sha256_SIGMA1(e) + sha_ch(e, f, g) + sha256_k(i) + W[i];
+		t2 = sha256_SIGMA0(a) + sha_maj(a, b, c);
+		h = g;
+		g = f;
+		f = e;
+		e = d + t1;
+		d = c;
+		c = b;
+		b = a;
+		a = t1 + t2;
+	}
+	hasher->state.words[0] += a;
+	hasher->state.words[1] += b;
+	hasher->state.words[2] += c;
+	hasher->state.words[3] += d;
+	hasher->state.words[4] += e;
+	hasher->state.words[5] += f;
+	hasher->state.words[6] += g;
+	hasher->state.words[7] += h;
+	
+}
+
+
+
+void sha256_hasher_add_byte(sha256_hasher_t hasher, uint8_t byte)
+{
+	// the XOR 3 comes from SHA256's weird behaviour
+	// regarding bit streams. Just do it and do not
+	// think about that crap :-P.
+	hasher->buffer.bytes[hasher->block_offset] = byte;
+	hasher->block_offset++;
+	if(hasher->block_offset == SHA256_BLOCK_LEN)
+	{
+		sha256_hash_block(hasher);
+		hasher->block_offset = 0;
+	}
+}
+
+/**
+ * NOTE: once the block has been pad'ed the hasher will
+ * produce nonsense data. Therefore putc will return EOF
+ * once the hasher has been pad'ed (this happens, when 
+ * sha256_hasher_gethash or sha256_hasher_gethmac are invoced).
+ * */
+int sha256_hasher_putc(sha256_hasher_t hasher, uint8_t byte)
+{
+	if(hasher->_lock)
+	{
+		return EOF;
+	}
+	hasher->total_bytes++;
+	sha256_hasher_add_byte(hasher, byte);
+	return byte;
+
+}
+
+
+
+void sha256_hasher_pad(sha256_hasher_t hasher)
+{
+	hasher->_lock = 1;
+	sha256_hasher_add_byte(hasher, 0x80);
+	while(hasher->block_offset != 56)
+	{
+		sha256_hasher_add_byte(hasher, 0);
+	}
+
+	//int i;
+	// the -3 comes from SHA256's weird bit stream crap.
+	// Just do not think too much about it.
+	//for(i = 64; i >= 8 ; i -= 8)
+	//{
+	//	sha256_hasher_add_byte(hasher, hasher->total_bytes >> (i - 3));
+	//}
+//	sha256_hasher_add_byte(hasher, hasher->total_bytes >> 61);
+	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 53);
+	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 45);
+	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 37);
+	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 29);
+	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 21);
+	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 13);
+	//sha256_hasher_add_byte(hasher, hasher->total_bytes >> 5);
+	//sha256_hasher_add_byte(hasher, hasher->total_bytes << 3);
+	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8 >> 56);
+	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8 >> 48);
+	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8 >> 40);
+	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8 >> 32);
+	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8 >> 24);
+	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8 >> 16);
+	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8 >> 8);
+	sha256_hasher_add_byte(hasher, hasher->total_bytes * 8);
+
+}
+
+uint8_t * sha256_hasher_gethash(sha256_hasher_t hasher)
+{
+	sha256_hasher_pad(hasher);
+	int i;
+
+	// switch byte order.
+	for(i = 0; i < 8; i++)
+	{
+		uint32_t a, b;
+		a = hasher->state.words[i];
+		b = a << 24;
+		b |= ( a << 8) & 0x00ff0000;
+		b |= ( a >> 8) & 0x0000ff00;
+		b |= a >> 24;
+		hasher->state.words[i] = b;
+	}
+	return hasher->state.bytes;
+}
+
+
+#ifdef SHA256_ENABLE_HMAC
+void sha256_hasher_init_hmac(sha256_t hasher, const uint8_t * key, size_t key_len)
+{
+	int i;
+	memset(hasher->hmac_key_buffer, 0, SHA256_BLOCK_LEN);
+
+	if(key_len > SHA256_BLOCK_LEN)
+	{
+		sha256_hasher_init(hasher);
+		while(key_len--)
+		{
+			sha256_hasher_putc(hasher, *key++);
+		}
+		memcpy(hasher->hmac_key_buffer, 
+				sha256_hasher_gethash(hasher),
+				SHA256_HASH_LEN);
+	}
+	else
+	{
+		memcpy(hasher->hmac_key_buffer, key, key_len);
+	}
+	sha256_hasher_init(hasher);
+	for(i = 0; i < SHA256_BLOCK_LEN; i++)
+	{
+		sha256_hasher_putc(hasher, hasher->hmac_key_buffer[i] ^ SHA256_HMAC_IPAD);
+	}
+
+}
+uint8_t * sha256_hasher_gethmac(sha256_t hasher)
+{
+	int i;
+	memcpy(hasher->hmac_inner_hash, sha256_hasher_gethash(hasher),
+			SHA256_HASH_LEN);
+	sha256_hasher_init(hasher);
+
+	for(i = 0; i < SHA256_BLOCK_LEN; i++)
+	{
+		sha256_hasher_putc(hasher, hasher->hmac_key_buffer[i] ^ SHA256_HMAC_OPAD);
+	}
+	for(i = 0; i < SHA256_HASH_LEN; i++)
+	{
+		sha256_hasher_putc(hasher, hasher->hmac_inner_hash[i]);
+	}
+	return sha256_hasher_gethash(hasher);
+}
+#endif
