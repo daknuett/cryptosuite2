@@ -2,6 +2,7 @@
 #define SHA256_HASH_H_
 
 
+#include "default.h"
 #include "constants.h"
 #include "types.h"
 #include "basic.h"

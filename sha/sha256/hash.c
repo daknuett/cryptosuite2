@@ -1,5 +1,6 @@
 #include "hash.h"
 #include <stdio.h>
+#include <string.h>
 
 
 void sha256_hash_block(sha256_hasher_t hasher)
