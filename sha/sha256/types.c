@@ -21,7 +21,7 @@
 
 sha256_hasher_t sha256_hasher_new(void)
 {
-	sha256_hasher_t hasher = malloc(sizeof(struct sha256_hasher_s));
+	sha256_hasher_t hasher = (sha256_hasher_t) malloc(sizeof(struct sha256_hasher_s));
 	if(!hasher)
 	{
 		return NULL;
