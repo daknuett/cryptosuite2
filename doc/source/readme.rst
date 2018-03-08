@@ -3,6 +3,12 @@ Cryptosuite2
 
 .. contents::
 
+Links
+=====
+
+- The `code is here <https://github.com/daknuett/cryptosuite2>`_.
+- The `docs are here <https://daknuett.github.io/cryptosuite2/index.html>`_.
+
 What Is Cryptosuite2?
 =====================
 
@@ -20,32 +26,8 @@ Install
 Usage
 =====
 
-Simple
-------
-
-Just include the header and use the built-in wrapper:
-
-.. code:: Cpp
-
-	#include "sha256.h"
-
-	void loop(){
-		 Sha256.init();
-		 Sha256.print("abc");
-		 uint8_t * hash = Sha256.result();
-	}
-	void setup(){}
-
-
-Extended
---------
-
-It is possible to use the pure ``C`` library and omit the
-``C++`` wrapper. This uses less RAM.
-
-Also it is possible to have several hashers at a time.
-
-To be done.
+Take a look at the `docs
+<https://daknuett.github.io/cryptosuite2/usage.html>`_.
 
 
 Gotchas
