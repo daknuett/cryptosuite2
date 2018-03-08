@@ -61,7 +61,6 @@ Todos
 =====
 
 - Add examples.
-- Add a proper `Extended`_ guide.
 - Add ``sha1`` and other algorithms.
 
 Contributing
@@ -71,3 +70,7 @@ Contributions are welcome!
 
 Just add yourself in the ``contributors.yml`` file and send
 a pull request.
+
+All contributions must be licensed under the GNU GPLv3. This
+is just because keeping track of various licenses is a pain
+in the ass.

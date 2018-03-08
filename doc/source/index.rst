@@ -11,6 +11,7 @@ Welcome to cryptosuite2's documentation!
    :caption: Contents:
 
    readme
+   usage
    contributors
 
 
