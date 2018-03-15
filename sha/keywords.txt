@@ -1,0 +1,7 @@
+Sha256	KEYWORD1		DATA_TYPE
+
+init	KEYWORD2
+result	KEYWORD2
+initHmac	KEYWORD2
+resultHmac	KEYWORD2
+write	KEYWORD2

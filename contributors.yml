@@ -5,3 +5,8 @@
           descr: Initial version of the library
         - year: 2018
           descr: Initial version of the C++ Wrapper
+- name: per1234
+  email:
+  contributions:
+        - year: 2018
+          descr: Add keywords.txt
