@@ -14,3 +14,4 @@ Contributors
 	 `None <mailto:None>`_
 
 	- *2018* Add keywords.txt
+	- *2018* Add library.properties

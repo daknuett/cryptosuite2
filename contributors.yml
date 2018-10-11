@@ -10,3 +10,5 @@
   contributions:
         - year: 2018
           descr: Add keywords.txt
+        - year: 2018
+          descr: Add library.properties
