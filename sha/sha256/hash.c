@@ -38,9 +38,6 @@ void sha256_hash_block(sha256_hasher_t hasher)
 						(((uint32_t)hasher->buffer.bytes[i4 + 2]) << 8) |
 						(((uint32_t)hasher->buffer.bytes[i4 + 3]));
 	}
-	for(i = 16; i < 64; i++)
-	{
-	}
 	
 	a = hasher->state.words[0];
 	b = hasher->state.words[1];
