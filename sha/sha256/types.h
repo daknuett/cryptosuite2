@@ -37,7 +37,7 @@ typedef union
 
 } sha256_block_t;
 
-typedef struct sha256_hasher_s
+typedef struct __attribute__((__packed__)) sha256_hasher_s
 {
 	sha256_state_t state;
 	sha256_block_t buffer;
