@@ -39,7 +39,7 @@ void sha256_hasher_init(sha256_hasher_t hasher)
 		hasher->state.words[i] = pgm_read_dword(sha256_init_state + i);
 	}
 #else
-	memcpy(hasher->state.words, sha256_init_state, 32);
+	memcpy(hasher->state.words, sha256_init_state, SHA256_HASH_LEN);
 #endif
 	hasher->block_offset = 0;
 	hasher->total_bytes = 0;
