@@ -16,6 +16,7 @@
 
 #include "sha256.h"
 
+#ifndef SHA256_DISABLED
 #ifndef SHA256_DISABLE_WRAPPER
 void Sha256Wrapper::init(void)
 {
@@ -51,4 +52,5 @@ uint8_t * Sha256Wrapper::result(void)
 
 Sha256Wrapper Sha256;
 
+#endif
 #endif

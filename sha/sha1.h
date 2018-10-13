@@ -14,18 +14,34 @@
 // along with cryptosuite2.  If not, see <http://www.gnu.org/licenses/>. //
 //                                                                       //
 
-// This file is the module config header
-// when the arduino interface is NOT used.
-//
-// If you want to use the library with Arduino,
-// edit sha/config.h. If you use a proper build system, 
-// use this config file for sha1 and sha/sha256/default.h
-// for sha256.
-#ifndef SHA1_DEFAULT_H_
-#define SHA1_DEFAULT_H_
+#include "config.h"
 
-#define SHA1_ENABLE_HMAC
+#ifndef Sha1_h
+#define Sha1_h
 
+#include <inttypes.h>
+#include "Print.h"
+#include "sha1/sha1.h"
+
+#ifndef SHA1_DISABLE_WRAPPER
+class Sha1Wrapper : public Print
+{
+	public:
+		void init(void);
+		uint8_t * result(void);
+#ifdef SHA1_ENABLE_HMAC
+		void initHmac(const uint8_t * secret, unsigned int secretLength);
+		uint8_t * resultHmac(void);
+#endif
+		virtual size_t write(uint8_t);
+		using Print::write;
+	private:
+		struct sha1_hasher_s _hasher;
+
+};
+
+extern Sha1Wrapper Sha1;
+#endif
 
 #endif
 

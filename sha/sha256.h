@@ -14,6 +14,8 @@
 // along with cryptosuite2.  If not, see <http://www.gnu.org/licenses/>. //
 //                                                                       //
 
+#include "config.h"
+
 #ifndef Sha256_h
 #define Sha256_h
 

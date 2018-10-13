@@ -14,6 +14,14 @@
 // along with cryptosuite2.  If not, see <http://www.gnu.org/licenses/>. //
 //                                                                       //
 
+
+// This file is the module config header
+// when the arduino interface is NOT used.
+//
+// If you want to use the library with Arduino,
+// edit sha/config.h. If you use a proper build system, 
+// use this config file for sha256 and sha/sha1/default.h
+// for sha1.
 #ifndef SHA256_DEFAULT_H_
 #define SHA256_DEFAULT_H_
 
