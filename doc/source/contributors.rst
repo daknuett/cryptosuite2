@@ -9,6 +9,7 @@ Contributors
 
 	- *2018* Initial version of the library
 	- *2018* Initial version of the C++ Wrapper
+	- *2018* SHA1 implementation and C++ Wrapper for SHA1
 **per1234** 
 
 	 `None <mailto:None>`_
