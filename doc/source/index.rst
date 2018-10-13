@@ -11,7 +11,8 @@ Welcome to cryptosuite2's documentation!
    :caption: Contents:
 
    readme
-   usage
+   usage_arduino
+   usage_normal
    contributors
 
 
