@@ -1,0 +1,13 @@
+{
+	"name": "cryptosuite2",
+	"keywords": "crypto, sha256, sha265-hmac, hash",
+	"description": "Arduino/Generic C library for SHA256 hashing and SHA256-HMAC (SHA1 coming soon)",
+	"repository":
+	{
+		"type": "git",
+		"branch": "master",
+		"url": "https://github.com/daknuett/cryptosuite2.git"
+	},
+	"version": "0.1.0",
+	"platforms": "*"
+}
