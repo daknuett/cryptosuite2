@@ -5,7 +5,7 @@
 	"repository":
 	{
 		"type": "git",
-		"branch": "platformIO_integration",
+		"branch": "master",
 		"url": "https://github.com/daknuett/cryptosuite2.git"
 	},
 	"version": "0.1.0",
