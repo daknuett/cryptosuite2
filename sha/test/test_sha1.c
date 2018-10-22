@@ -49,7 +49,7 @@ int main(void)
 
 	sha1_hasher_init(hasher);
 	result = sha1_hasher_gethash(hasher);
-	printf("EXPECT: adc83b19e793491b1c6ea0fd8b46cd9f32e592fc\n");
+	printf("EXPECT: da39a3ee5e6b4b0d3255bfef95601890afd80709\n");
 	printf("GOT:    ");
 	print_hash(result);
 
