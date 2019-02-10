@@ -38,6 +38,7 @@ Gotchas
   ``sha256_hasher_gethmac()``, ``sha256_hasher_pad()``)
   have been invoked ``Sha256.init()`` (or
   ``sha256_hasher_init()``) must be invoked!
+- The same thing applies for ``Sha1`` and ``sha1_*``.
 
 Todos
 =====
