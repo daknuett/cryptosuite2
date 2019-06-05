@@ -14,3 +14,5 @@
           descr: Add keywords.txt
         - year: 2018
           descr: Add library.properties
+        - year: 2019
+          descr: Move example sketches to appropriately named folders
