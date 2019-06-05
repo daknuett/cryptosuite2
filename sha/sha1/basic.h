@@ -14,8 +14,8 @@
 // along with cryptosuite2.  If not, see <http://www.gnu.org/licenses/>. //
 //                                                                       //
 
-#ifndef SHA256_BASIC_H_
-#define SHA256_BASIC_H_
+#ifndef SHA1_BASIC_H_
+#define SHA1_BASIC_H_
 
 #include "default.h"
 #include <inttypes.h>
