@@ -8,6 +8,6 @@
 		"branch": "master",
 		"url": "https://github.com/daknuett/cryptosuite2.git"
 	},
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"platforms": "*"
 }
