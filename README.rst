@@ -19,9 +19,19 @@ provides SHA256 and HMAC-SHA256.
 Install
 =======
 
+Using the ZIP for Arduino
+-------------------------
+
+Download the latest ZIP release from `the release page <https://github.com/daknuett/cryptosuite2/releases/>`_
+and install it using the Arduino IDE.
+
+Manually
+--------
+
 - Download the library.
 - Copy ``cryptosuite2/sha`` to ``~/sketchbook/libraries``
   (``cp -rv cryptosuite2/sha ~/sketchbook/libraries``)
+  or ``~/Arduino/libraries`` (``cp -rv cryptosuite2/sha ~/Arduino/libraries``)
 
 Usage
 =====
