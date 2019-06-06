@@ -16,3 +16,4 @@ zip:
 	- cd sha && make clean
 	zip sha.zip sha/*
 	zip sha.zip sha/*/*
+	zip sha.zip sha/*/*/*
