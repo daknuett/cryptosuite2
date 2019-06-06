@@ -53,7 +53,8 @@ Gotchas
 Todos
 =====
 
-- Add ``sha1`` and other algorithms.
+You can ask for further features, but right now it seems
+like all the required stuff is running.
 
 Contributing
 ============
