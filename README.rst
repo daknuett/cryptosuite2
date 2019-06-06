@@ -53,7 +53,6 @@ Gotchas
 Todos
 =====
 
-- Add examples.
 - Add ``sha1`` and other algorithms.
 
 Contributing
