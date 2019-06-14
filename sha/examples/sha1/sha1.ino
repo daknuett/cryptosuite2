@@ -22,7 +22,7 @@ void loop(void)
 
         Serial.print("Hash:\n");
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
                 Serial.print("0123456789abcdef"[result[i] >> 4]);
                 Serial.print("0123456789abcdef"[result[i] & 0xf]);
         }
