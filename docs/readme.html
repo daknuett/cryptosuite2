@@ -26,7 +26,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="top" title="cryptosuite2 0.0.1 documentation" href="index.html" />
-    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="next" title="Usage with Arduino" href="usage_arduino.html" />
     <link rel="prev" title="Welcome to cryptosuite2’s documentation!" href="index.html" />
    
   <link rel="stylesheet" href="static/custom.css" type="text/css" />
@@ -50,14 +50,18 @@
 <li><a class="reference internal" href="#cryptosuite2" id="id1">Cryptosuite2</a><ul>
 <li><a class="reference internal" href="#links" id="id2">Links</a></li>
 <li><a class="reference internal" href="#what-is-cryptosuite2" id="id3">What Is Cryptosuite2?</a></li>
-<li><a class="reference internal" href="#install" id="id4">Install</a></li>
-<li><a class="reference internal" href="#usage" id="id5">Usage</a><ul>
-<li><a class="reference internal" href="#gotchas" id="id6">Gotchas</a></li>
+<li><a class="reference internal" href="#install" id="id4">Install</a><ul>
+<li><a class="reference internal" href="#using-the-zip-for-arduino" id="id5">Using the ZIP for Arduino</a></li>
+<li><a class="reference internal" href="#manually" id="id6">Manually</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#todos" id="id7">Todos</a></li>
-<li><a class="reference internal" href="#contributing" id="id8">Contributing</a></li>
-<li><a class="reference internal" href="#support" id="id9">Support</a></li>
+<li><a class="reference internal" href="#usage" id="id7">Usage</a><ul>
+<li><a class="reference internal" href="#gotchas" id="id8">Gotchas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#todos" id="id9">Todos</a></li>
+<li><a class="reference internal" href="#contributing" id="id10">Contributing</a></li>
+<li><a class="reference internal" href="#support" id="id11">Support</a></li>
 </ul>
 </li>
 </ul>
@@ -77,17 +81,26 @@ provides SHA256 and HMAC-SHA256.</p>
 </div>
 <div class="section" id="install">
 <h2><a class="toc-backref" href="#id4">Install</a><a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-the-zip-for-arduino">
+<h3><a class="toc-backref" href="#id5">Using the ZIP for Arduino</a><a class="headerlink" href="#using-the-zip-for-arduino" title="Permalink to this headline">¶</a></h3>
+<p>Download the latest ZIP release from <a class="reference external" href="https://github.com/daknuett/cryptosuite2/releases/">the release page</a>
+and install it using the Arduino IDE.</p>
+</div>
+<div class="section" id="manually">
+<h3><a class="toc-backref" href="#id6">Manually</a><a class="headerlink" href="#manually" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Download the library.</li>
 <li>Copy <code class="docutils literal"><span class="pre">cryptosuite2/sha</span></code> to <code class="docutils literal"><span class="pre">~/sketchbook/libraries</span></code>
-(<code class="docutils literal"><span class="pre">cp</span> <span class="pre">-rv</span> <span class="pre">cryptosuite2/sha</span> <span class="pre">~/sketchbook/libraries</span></code>)</li>
+(<code class="docutils literal"><span class="pre">cp</span> <span class="pre">-rv</span> <span class="pre">cryptosuite2/sha</span> <span class="pre">~/sketchbook/libraries</span></code>)
+or <code class="docutils literal"><span class="pre">~/Arduino/libraries</span></code> (<code class="docutils literal"><span class="pre">cp</span> <span class="pre">-rv</span> <span class="pre">cryptosuite2/sha</span> <span class="pre">~/Arduino/libraries</span></code>)</li>
 </ul>
 </div>
+</div>
 <div class="section" id="usage">
-<h2><a class="toc-backref" href="#id5">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>Take a look at the <a class="reference external" href="https://daknuett.github.io/cryptosuite2/usage.html">docs</a>.</p>
 <div class="section" id="gotchas">
-<h3><a class="toc-backref" href="#id6">Gotchas</a><a class="headerlink" href="#gotchas" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">Gotchas</a><a class="headerlink" href="#gotchas" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Once <code class="docutils literal"><span class="pre">Sha256.result()</span></code> or <code class="docutils literal"><span class="pre">Sha256.resultHmac()</span></code>
 (or <code class="docutils literal"><span class="pre">sha256_hasher_gethash()</span></code>,
@@ -98,14 +111,12 @@ have been invoked <code class="docutils literal"><span class="pre">Sha256.init()
 </div>
 </div>
 <div class="section" id="todos">
-<h2><a class="toc-backref" href="#id7">Todos</a><a class="headerlink" href="#todos" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Add examples.</li>
-<li>Add <code class="docutils literal"><span class="pre">sha1</span></code> and other algorithms.</li>
-</ul>
+<h2><a class="toc-backref" href="#id9">Todos</a><a class="headerlink" href="#todos" title="Permalink to this headline">¶</a></h2>
+<p>You can ask for further features, but right now it seems
+like all the required stuff is running.</p>
 </div>
 <div class="section" id="contributing">
-<h2><a class="toc-backref" href="#id8">Contributing</a><a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">Contributing</a><a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
 <p>Contributions are welcome!</p>
 <p>Just add yourself in the <code class="docutils literal"><span class="pre">contributors.yml</span></code> file and send
 a pull request.</p>
@@ -114,7 +125,7 @@ is just because keeping track of various licenses is a pain
 in the ass.</p>
 </div>
 <div class="section" id="support">
-<h2><a class="toc-backref" href="#id9">Support</a><a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Support</a><a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
 <p>I can give you some assistance in general, but do not expect
 too much. I have a lot to do.
 Also I will fix bugs, but it might take a while.</p>
@@ -136,7 +147,11 @@ is a good idea to do so.</p>
 <li><a class="reference internal" href="#">Cryptosuite2</a><ul>
 <li><a class="reference internal" href="#links">Links</a></li>
 <li><a class="reference internal" href="#what-is-cryptosuite2">What Is Cryptosuite2?</a></li>
-<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#install">Install</a><ul>
+<li><a class="reference internal" href="#using-the-zip-for-arduino">Using the ZIP for Arduino</a></li>
+<li><a class="reference internal" href="#manually">Manually</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#usage">Usage</a><ul>
 <li><a class="reference internal" href="#gotchas">Gotchas</a></li>
 </ul>
@@ -152,7 +167,7 @@ is a good idea to do so.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="index.html" title="previous chapter">Welcome to cryptosuite2&#8217;s documentation!</a></li>
-      <li>Next: <a href="usage.html" title="next chapter">Usage</a></li>
+      <li>Next: <a href="usage_arduino.html" title="next chapter">Usage with Arduino</a></li>
   </ul></li>
 </ul>
 </div>
