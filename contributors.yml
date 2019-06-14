@@ -7,6 +7,8 @@
           descr: Initial version of the C++ Wrapper
         - year: 2018
           descr: SHA1 implementation and C++ Wrapper for SHA1
+        - year: 2019
+          descr: Some bug fixes & some usability enhancments
 - name: per1234
   email:
   contributions:
