@@ -16,3 +16,8 @@
           descr: Add library.properties
         - year: 2019
           descr: Move example sketches to appropriately named folders
+- name: JoshHeaney
+  email:
+  contributions:
+        - year: 2019
+          descr: SHA256 and SHA1 HMAC example digest fix.
