@@ -11,6 +11,10 @@ create-contributors:
 doc: create-contributors
 	cd doc && make html
 
+tests:
+	cd sha/test && make -s
+	cd sha/test && make clean
+
 zip:
 	- rm sha.zip
 	- cd sha && make clean
