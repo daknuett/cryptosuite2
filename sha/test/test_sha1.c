@@ -14,7 +14,7 @@
 // along with cryptosuite2.  If not, see <http://www.gnu.org/licenses/>. //
 //                                                                       //
 
-#include <sha1/sha1.h>
+#include "../sha1/sha1.h"
 #include <assert.h>
 #include <string.h>
 #include <stdio.h>
@@ -37,6 +37,9 @@ int main(void)
 
 
 
+    uint8_t expect_test1[SHA1_HASH_LEN] = {0xa9, 0x99, 0x3e, 0x36, 0x47, 0x06, 0x81, 0x6a, 0xba,
+                                            0x3e, 0x25, 0x71, 0x78, 0x50, 0xc2, 0x6c, 0x9c, 0xd0,
+                                            0xd8, 0x9d} ;
 
 	sha1_hasher_init(hasher);
 	sha1_hasher_write(hasher, "abc", 3);
@@ -45,14 +48,26 @@ int main(void)
 	printf("GOT:    ");
 	print_hash(result);
 
+    for(i=0; i < SHA1_HASH_LEN; i++)
+    {
+        assert(result[i] == expect_test1[i]);
+    }
 
 
+
+    uint8_t expect_test2[SHA1_HASH_LEN] = {0xda, 0x39, 0xa3, 0xee, 0x5e, 0x6b, 0x4b, 0x0d,
+                                            0x32, 0x55, 0xbf, 0xef, 0x95, 0x60, 0x18, 0x90,
+                                            0xaf, 0xd8, 0x07, 0x09};
 	sha1_hasher_init(hasher);
 	result = sha1_hasher_gethash(hasher);
 	printf("EXPECT: da39a3ee5e6b4b0d3255bfef95601890afd80709\n");
 	printf("GOT:    ");
 	print_hash(result);
 
+    for(i=0; i < SHA1_HASH_LEN; i++)
+    {
+        assert(result[i] == expect_test2[i]);
+    }
 
 
 	sha1_hasher_del(hasher);
