@@ -23,3 +23,8 @@
   contributions:
         - year: 2019
           descr: SHA256 and SHA1 HMAC example digest fix.
+- name: nagimov
+  email:
+  contributions:
+        - year: 2020
+          descr: fix expected hmac256 test output
