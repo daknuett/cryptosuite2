@@ -23,3 +23,8 @@ Contributors
 	 `None <mailto:None>`_
 
 	- *2019* SHA256 and SHA1 HMAC example digest fix.
+**nagimov** 
+
+	 `None <mailto:None>`_
+
+	- *2020* fix expected hmac256 test output
