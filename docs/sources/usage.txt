@@ -49,6 +49,7 @@ Example:
 	// read data from the serial interface and print the
 	// hash to the serial
 
+	const char hexMap[] PROGMEM = "0123456789abcdef";
 	void setup(void)
 	{
 		Serial.begin(9600);
@@ -69,8 +70,8 @@ Example:
 		Serial.print("Hash:\n");
 
 		for (int i = 0; i < 32; i++) {
-			Serial.print("0123456789abcdef"[result[i] >> 4]);
-			Serial.print("0123456789abcdef"[result[i] & 0xf]);
+			Serial.print((char)pgm_read_byte(hexMap + (result[i] >> 4)));
+			Serial.print((char)pgm_read_byte(hexMap + (result[i] & 0xf)));
 		}
 		Serial.print("\n");
 	}
@@ -82,6 +83,7 @@ The same way *HMAC* can be used:
 
 	#include "sha256.h"
 
+	const char hexMap[] PROGMEM = "0123456789abcdef";
 	void setup(void)
 	{
 		Serial.begin(9600);
@@ -95,8 +97,8 @@ The same way *HMAC* can be used:
 		Serial.println("Expect: b0344c61d8db38535ca8afceaf0bf12b881dc200c9833da726e9376c2e32cff7");
 		Serial.print(  "Got   : ");
 		for (int i = 0; i < 32; i++) {
-			Serial.print("0123456789abcdef"[result[i] >> 4]);
-			Serial.print("0123456789abcdef"[result[i] & 0xf]);
+			Serial.print((char)pgm_read_byte(hexMap + (result[i] >> 4)));
+			Serial.print((char)pgm_read_byte(hexMap + (result[i] & 0xf)));
 		}
 		Serial.print("\n");
 	}
@@ -164,6 +166,7 @@ Obtaining the Result and free'ing the Hasher
 
 .. code-block:: c++
 
+	const char hexMap[] PROGMEM = "0123456789abcdef";
 	void loop(void)
 	{
 		sha256_hasher_init(hasher);
@@ -175,8 +178,8 @@ Obtaining the Result and free'ing the Hasher
 		Serial.print("EXPECT: ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad\n");
 		Serial.print("GOT   : ");
 		for (int i = 0; i < 32; i++) {
-			Serial.print("0123456789abcdef"[result[i] >> 4]);
-			Serial.print("0123456789abcdef"[result[i] & 0xf]);
+			Serial.print((char)pgm_read_byte(hexMap + (result[i] >> 4)));
+			Serial.print((char)pgm_read_byte(hexMap + (result[i] & 0xf)));
 		}
 		Serial.print("\n");
 
