@@ -1,5 +1,6 @@
 #include "sha256.h"
 
+const char hexMap[] PROGMEM = "0123456789abcdef";
 void setup(void)
 {
         Serial.begin(9600);
@@ -13,8 +14,8 @@ void setup(void)
         Serial.println("Expect: 5bdcc146bf60754e6a042426089575c75a003f089d2739839dec58b964ec3843");
         Serial.print(  "Got   : ");
         for (int i = 0; i < 32; i++) {
-                Serial.print("0123456789abcdef"[result[i] >> 4]);
-                Serial.print("0123456789abcdef"[result[i] & 0xf]);
+                Serial.print((char)pgm_read_byte(hexMap + (result[i] >> 4)));
+                Serial.print((char)pgm_read_byte(hexMap + (result[i] & 0xf)));
         }
         Serial.print("\n");
 }
