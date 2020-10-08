@@ -28,3 +28,4 @@ Contributors
 	 `None <mailto:None>`_
 
 	- *2020* fix expected hmac256 test output
+	- *2020* Moved some data from RAM to flash in the examples

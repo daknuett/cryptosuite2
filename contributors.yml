@@ -28,3 +28,5 @@
   contributions:
         - year: 2020
           descr: fix expected hmac256 test output
+        - year: 2020
+          descr: Moved some data from RAM to flash in the examples
