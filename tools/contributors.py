@@ -1,4 +1,5 @@
 import docopt, yaml, sys
+from yaml import Loader
 
 usage = \
 '''
@@ -22,7 +23,7 @@ if( __name__ == "__main__"):
 			sys.exit(1)
 
 		try:
-			data = yaml.load(f)
+			data = yaml.load(f, Loader)
 		except Exception as e:
 			print(e, file = sys.stdout)
 			sys.exit(1)
@@ -50,7 +51,7 @@ if( __name__ == "__main__"):
 			sys.exit(1)
 
 		try:
-			data = yaml.load(f)
+			data = yaml.load(f, Loader)
 		except Exception as e:
 			print(e, file = sys.stdout)
 			sys.exit(1)
