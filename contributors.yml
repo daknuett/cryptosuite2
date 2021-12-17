@@ -30,3 +30,10 @@
           descr: fix expected hmac256 test output
         - year: 2020
           descr: Moved some data from RAM to flash in the examples
+- name: Christoph Honal
+  email: 
+  contributions:
+        - year: 2021
+          descr: Remove test sketches from the regular build on PlatformIO
+        - year: 2021
+          descr: Fix out-of-bounds memory access in SHA1 hashing

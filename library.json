@@ -10,5 +10,9 @@
 	},
 	"version": "0.2.5",
 	"platforms": "*",
-	"examples":["sha/examples/*/*.ino"]
+	"examples": [ "sha/examples/*/*.ino" ],
+	"build":
+	{
+		"srcFilter": "+<*> -<.git/> -<sha/examples/> -<sha/test/> -<tools/> -<doc/> -<docs/>"
+	}
 }
