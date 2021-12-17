@@ -23,3 +23,15 @@ Contributors
 	 `None <mailto:None>`_
 
 	- *2019* SHA256 and SHA1 HMAC example digest fix.
+**nagimov** 
+
+	 `None <mailto:None>`_
+
+	- *2020* fix expected hmac256 test output
+	- *2020* Moved some data from RAM to flash in the examples
+**Christoph Honal** 
+
+	 `None <mailto:None>`_
+
+	- *2021* Remove test sketches from the regular build on PlatformIO
+	- *2021* Fix out-of-bounds memory access in SHA1 hashing

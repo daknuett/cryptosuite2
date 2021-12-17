@@ -9,6 +9,8 @@ Links
 - The `code is here <https://github.com/daknuett/cryptosuite2>`_.
 - The `docs are here <https://daknuett.github.io/cryptosuite2/index.html>`_.
 
+
+
 What Is Cryptosuite2?
 =====================
 
@@ -33,7 +35,6 @@ Manually
   (``cp -rv cryptosuite2/sha ~/sketchbook/libraries``)
   or ``~/Arduino/libraries`` (``cp -rv cryptosuite2/sha ~/Arduino/libraries``)
 
-
 Usage
 =====
 
@@ -49,6 +50,7 @@ Gotchas
   ``sha256_hasher_gethmac()``, ``sha256_hasher_pad()``)
   have been invoked ``Sha256.init()`` (or
   ``sha256_hasher_init()``) must be invoked!
+- The same thing applies for ``Sha1`` and ``sha1_*``.
 
 Todos
 =====
@@ -74,10 +76,3 @@ Support
 I can give you some assistance in general, but do not expect
 too much. I have a lot to do. 
 Also I will fix bugs, but it might take a while.
-
-If you want to speed up my support/my fixes `buy me a beer
-<https://paypal.me/daknuett/5>`_. Also you are welcome to 
-`support me <https://paypal.me/daknuett/10>`_ if you think it 
-is a good idea to do so.
-
-(An I kinda wanted to test these paypal links :-P)
