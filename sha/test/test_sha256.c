@@ -24,7 +24,7 @@ void print_hash(uint8_t * result)
 	int i;
 	for(i = 0; i < SHA256_HASH_LEN; i++)
 	{
-		printf("%2x", result[i]);
+		printf("%02x", result[i]);
 	}
 	printf("\n");
 }
