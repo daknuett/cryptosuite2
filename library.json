@@ -1,18 +1,36 @@
 {
 	"name": "cryptosuite2",
-	"keywords": "crypto, sha256, sha265-hmac, hash, sha1, sha1-hmac",
+	"version": "0.2.7",
 	"description": "Arduino/Generic C library for SHA256, SHA1 hashing and SHA256-HMAC, SHA1-HMAC",
-	"repository":
-	{
-		"type": "git",
-		"branch": "master",
-		"url": "https://github.com/daknuett/cryptosuite2.git"
-	},
-	"version": "0.2.6",
+	"keywords": "crypto, sha256, sha265-hmac, hash, sha1, sha1-hmac",
 	"platforms": "*",
+	"frameworks": "arduino",
+	"authors": [
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/EnviroDIY/cryptosuite2.git",
+		"branch": "master"
+	},
+	"export": {
+    "include": [
+      "LICENSE",
+      "library.json",
+      "README.md",
+      "sha/*",
+      "sha/examples/*"
+    ]
+  },
 	"examples": [ "sha/examples/*/*.ino" ],
-	"build":
-	{
-		"srcFilter": "+<*> -<.git/> -<sha/examples/> -<sha/test/> -<tools/> -<doc/> -<docs/>"
-	}
+	"build": {
+		"srcDir": "sha/",
+		"srcFilter": [
+			"+<*.c>",
+			"+<*.cpp>",
+			"+<*.h>"
+		],
+		"libLDFMode": "deep+"
+	},
+	"dependencies": [
+	]
 }
