@@ -53,7 +53,9 @@ dkms.conf
 
 # PlatformIO
 .pio
-platformio.ini
+/platformio.ini
 
 # VSCode
 .vscode
+.clang_complete
+.gcc-flags.json
