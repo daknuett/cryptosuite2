@@ -8,7 +8,7 @@
 		"branch": "master",
 		"url": "https://github.com/daknuett/cryptosuite2.git"
 	},
-	"version": "0.2.6",
+	"version": "0.2.7",
 	"platforms": "*",
 	"examples": [ "sha/examples/*/*.ino" ],
 	"build":
