@@ -31,9 +31,14 @@
         - year: 2020
           descr: Moved some data from RAM to flash in the examples
 - name: Christoph Honal
-  email: 
+  email:
   contributions:
         - year: 2021
           descr: Remove test sketches from the regular build on PlatformIO
         - year: 2021
           descr: Fix out-of-bounds memory access in SHA1 hashing
+- name: Anthony Aufdenkampe
+  email: aaufdenkampe@limno.com
+  contributions:
+        - year: 2022
+          descr: Improve use with PlatformIO via `library.json` tweaks and example `plaformio.ini` files

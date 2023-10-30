@@ -3,7 +3,7 @@
 const char hexMap[] PROGMEM = "0123456789abcdef";
 void setup(void)
 {
-        Serial.begin(9600);
+        Serial.begin(115200);
 
         // this is actually the RFC4231 4.3 test
 
@@ -23,4 +23,3 @@ void setup(void)
 
 void loop(void)
 {}
-
