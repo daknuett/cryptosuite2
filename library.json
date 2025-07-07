@@ -9,7 +9,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/EnviroDIY/cryptosuite2.git",
+		"url": "https://github.com/daknuett/cryptosuite2.git",
 		"branch": "master"
 	},
 	"export": {
